@@ -3,7 +3,7 @@ export const Y = 0.0; // ground level
 export function initScene() {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0a1520);
-  scene.fog = new THREE.FogExp2(0x0a1520, 0.025);
+  scene.fog = new THREE.FogExp2(0x0a1520, 0.012);
   return scene;
 }
 
@@ -35,8 +35,8 @@ export function initLights(scene) {
   const moon = new THREE.DirectionalLight(0x3355aa, 0.8);
   moon.position.set(-12, 20, 8);
   moon.castShadow = true;
-  moon.shadow.camera.left = moon.shadow.camera.bottom = -20;
-  moon.shadow.camera.right = moon.shadow.camera.top = 20;
+  moon.shadow.camera.left = moon.shadow.camera.bottom = -35;
+  moon.shadow.camera.right = moon.shadow.camera.top = 35;
   moon.shadow.camera.far = 60;
   moon.shadow.mapSize.set(1024, 1024);
   scene.add(moon);
