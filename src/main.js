@@ -4,6 +4,7 @@ import { buildCampfire } from "./campfire.js";
 import { buildTent } from "./tent.js";
 import { placeTrees } from "./trees.js";
 import { initControls, handleResize } from "./controls.js";
+import { buildGrass, animateGrass } from "./grass.js";
 
 const scene = initScene();
 const camera = initCamera();
@@ -15,6 +16,7 @@ buildSky(scene, camera);
 const flameGroup = buildCampfire(scene);
 buildTent(scene);
 placeTrees(scene);
+buildGrass(scene);
 
 const controls = initControls(renderer, camera);
 handleResize(camera, renderer);
@@ -48,5 +50,7 @@ let t = 0;
     });
   }
 
+  animateGrass(t);
+  
   renderer.render(scene, camera);
 })();

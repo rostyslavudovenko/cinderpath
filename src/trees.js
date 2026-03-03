@@ -90,7 +90,7 @@ export function rockCluster(scene, x, z, sc = 1) {
 
 export function placeTrees(scene) {
   const onIsland = (x, z) => Math.hypot(x, z) < 12.5;
-  const nearFire = (x, z) => Math.hypot(x, z) < 4.0;
+  const nearFire = (x, z) => Math.hypot(x, z) < 2.5;
   function place(fn, count, minR, maxR, sc = [1, 1]) {
     for (let i = 0; i < count; i++) {
       let x,
@@ -134,6 +134,6 @@ export function placeTrees(scene) {
     [0, 11],
     [0, -11],
   ].forEach(([x, z]) => conePine(scene, x, z, rnd(0.9, 1.3)));
-  place(bush, 24, 4.0, 12, [0.6, 1.1]);
-  place(rockCluster, 14, 3.0, 12, [0.7, 1.3]);
+  place(bush, 24, 2.0, 12, [0.6, 1.1]);
+  place(rockCluster, 14, 2.0, 12, [0.7, 1.3]);
 }
