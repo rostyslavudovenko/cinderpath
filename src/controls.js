@@ -47,7 +47,7 @@ export function initControls(renderer, camera) {
   const EYE_H = Y + 1.65;
   const BOB_SPEED = 8;
   const BOB_AMP = 0.055;
-  const ISLAND_R = 11.5;
+  const ISLAND_R = 26.0;
 
   // Direction vectors
   const fwd = new THREE.Vector3();
@@ -68,7 +68,7 @@ export function initControls(renderer, camera) {
 
       if (locked && moving) {
         // Forward = horizontal projection of look direction
-        fwd.set(Math.sin(player.yaw), 0, Math.cos(player.yaw)).negate();
+        fwd.set(-Math.sin(player.yaw), 0, -Math.cos(player.yaw));
         right.set(Math.cos(player.yaw), 0, -Math.sin(player.yaw));
 
         if (keys["KeyW"] || keys["ArrowUp"])

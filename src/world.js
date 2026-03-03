@@ -3,8 +3,8 @@ import { rnd, rndI, pick, mkMat, toFlat, mkMesh } from "./utils.js";
 
 export function buildIsland(scene) {
   const shape = new THREE.Shape();
-  const N = 8,
-    R = 14;
+  const N = 10,
+    R = 28;
   for (let i = 0; i < N; i++) {
     const a = (i / N) * Math.PI * 2 - Math.PI / 8;
     i === 0
@@ -13,15 +13,15 @@ export function buildIsland(scene) {
   }
   shape.closePath();
   const geo = new THREE.ExtrudeGeometry(shape, {
-    depth: 1.8,
+    depth: 2.2,
     bevelEnabled: true,
-    bevelThickness: 0.5,
-    bevelSize: 0.4,
+    bevelThickness: 0.6,
+    bevelSize: 0.5,
     bevelSegments: 1,
   });
   const m = new THREE.Mesh(geo, [mkMat(0x1e4028), mkMat(0xa07830)]);
   m.rotation.x = -Math.PI / 2;
-  m.position.y = -2.2;
+  m.position.y = -2.7;
   m.receiveShadow = true;
   scene.add(m);
 }
