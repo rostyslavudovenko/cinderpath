@@ -1,4 +1,5 @@
-import { Y } from "./scene.js";
+import * as THREE from "three";
+//import { Y } from "./scene.js";
 import { rnd, rndI, pick, mkMat, toFlat, mkMesh } from "./utils.js";
 
 export function buildIsland(scene) {
