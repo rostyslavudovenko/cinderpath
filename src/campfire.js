@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { Y } from "./scene.js";
 import { rnd, pick, mkMat, toFlat } from "./utils.js";
 

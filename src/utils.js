@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export const rnd = (a, b) => Math.random() * (b - a) + a;
 export const rndI = (a, b) => Math.floor(rnd(a, b));
 export const pick = (arr) => arr[rndI(0, arr.length)];

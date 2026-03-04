@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export const Y = 0.0; // ground level
 
 export function initScene() {

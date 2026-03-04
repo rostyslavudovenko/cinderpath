@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { Y } from "./scene.js";
 
 export function buildTent(scene) {
