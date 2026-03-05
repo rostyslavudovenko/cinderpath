@@ -418,9 +418,11 @@ const TREE_FNS = [
 
 export function placeTrees(scene) {
   const nearFire = (x, z) => Math.hypot(x, z) < 3.5;
+  // River runs roughly x=-8..-1 across full island length
+  const nearRiver = (x, z) => x > -12.0 && x < -3.0 && Math.abs(z) < 25;
 
   GRID.forEach(([x, z]) => {
-    if (nearFire(x, z)) return;
+    if (nearFire(x, z) || nearRiver(x, z)) return;
 
     // jitter each point so it doesn't look like a grid
     const jx = x + rnd(-1.0, 1.0);

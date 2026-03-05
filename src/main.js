@@ -5,16 +5,18 @@ import { buildTent } from "./tent.js";
 import { placeTrees } from "./trees.js";
 import { initControls, handleResize } from "./controls.js";
 import { buildGrass, animateGrass } from "./grass.js";
+import { buildRiver, animateRiver, getRiverHole } from "./river.js";
 
 const scene = initScene();
 const camera = initCamera();
 const renderer = initRenderer();
 const { fireLight, fireLight2 } = initLights(scene);
 
-buildIsland(scene);
+buildIsland(scene, getRiverHole());
 buildSky(scene, camera);
 const flameGroup = buildCampfire(scene);
 buildTent(scene);
+buildRiver(scene);
 placeTrees(scene);
 buildGrass(scene);
 
@@ -27,18 +29,16 @@ let t = 0;
 (function animate() {
   requestAnimationFrame(animate);
   const now = performance.now();
-  const dt = Math.min((now - last) / 1000, 0.05); // seconds, capped
+  const dt = Math.min((now - last) / 1000, 0.05);
   last = now;
   t += dt;
 
   controls.update(dt);
 
-  // Fire flicker
   const flicker = 1.0 + Math.sin(t * 2.1) * 0.08 + Math.sin(t * 3.7) * 0.05;
   fireLight.intensity = 5.0 * flicker;
   fireLight2.intensity = 2.0 * flicker;
 
-  // Flame breathe
   if (flameGroup) {
     flameGroup.children.forEach((c, i) => {
       c.scale.y =
@@ -51,6 +51,7 @@ let t = 0;
   }
 
   animateGrass(t);
-  
+  animateRiver(t);
+
   renderer.render(scene, camera);
 })();

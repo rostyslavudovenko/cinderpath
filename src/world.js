@@ -1,8 +1,7 @@
 import * as THREE from "three";
-//import { Y } from "./scene.js";
-import { rnd, rndI, pick, mkMat, toFlat, mkMesh } from "./utils.js";
+import { rnd, mkMat } from "./utils.js";
 
-export function buildIsland(scene) {
+export function buildIsland(scene, riverHole = null) {
   const shape = new THREE.Shape();
   const N = 10,
     R = 28;
@@ -13,6 +12,16 @@ export function buildIsland(scene) {
       : shape.lineTo(Math.cos(a) * R, Math.sin(a) * R);
   }
   shape.closePath();
+
+  if (riverHole) {
+    const hole = new THREE.Path();
+    riverHole.forEach((p, i) =>
+      i === 0 ? hole.moveTo(p.x, -p.z) : hole.lineTo(p.x, -p.z),
+    );
+    hole.closePath();
+    shape.holes.push(hole);
+  }
+
   const geo = new THREE.ExtrudeGeometry(shape, {
     depth: 2.2,
     bevelEnabled: true,
@@ -28,12 +37,11 @@ export function buildIsland(scene) {
 }
 
 export function buildSky(scene, camera) {
-  // Stars
   const verts = [];
   for (let i = 0; i < 3000; i++) {
-    const th = rnd(0, Math.PI * 2),
-      ph = Math.acos(rnd(-1, 1)),
-      r = rnd(70, 110);
+    const th = Math.random() * Math.PI * 2,
+      ph = Math.acos(Math.random() * 2 - 1),
+      r = 70 + Math.random() * 40;
     verts.push(
       r * Math.sin(ph) * Math.cos(th),
       r * Math.sin(ph) * Math.sin(th),
@@ -54,7 +62,6 @@ export function buildSky(scene, camera) {
     ),
   );
 
-  // Moon
   const moon = new THREE.Mesh(
     new THREE.CircleGeometry(2.5, 14),
     new THREE.MeshBasicMaterial({ color: 0xddeeff }),
