@@ -55,10 +55,12 @@ export function buildGrass(scene) {
     scene.add(g);
   }
 
+  const inRiver = (x, z) => x > -12.5 && x < -3.0 && Math.abs(z) < 25;
   const ok = (x, z) =>
     Math.hypot(x, z) < 23 &&
     Math.hypot(x, z) > 1.0 &&
-    Math.hypot(x - 5.5, z + 3.5) > 2.2;
+    Math.hypot(x - 5.5, z + 3.5) > 2.2 &&
+    !inRiver(x, z);
 
   [
     [1.5, 1],

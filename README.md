@@ -27,11 +27,12 @@ Click anywhere to lock your cursor and start exploring.
 ## Features
 
 - **FPS camera** with head bob and pointer lock
-- **5 tree types** — cone pine, round tree, cluster tree, layered pine, poplar
+- **5 tree types** - cone pine, round tree, cluster tree, layered pine, poplar
 - **Dense hex-grid forest** — 225 placement points, randomized each load
 - **Animated grass** — wind sway with per-blade physics
 - **Campfire** with flickering point lights and breathing flame geometry
 - **Night sky** with 3000 stars and a moon
+- **Animated river** — winds through the island with vertex wave simulation
 - **Fog** for depth and atmosphere
 
 ## Getting Started
@@ -65,26 +66,27 @@ The application will open in your browser at `http://localhost:3000`.
 
 ### Development Commands
 
-- `npm run dev` — Start development server with hot reload
-- `npm run build` — Build for production
-- `npm run preview` — Preview production build locally
-- `npm run serve` — Serve production build on port 3000
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run serve` - Serve production build on port 3000
 
 ## File Structure
 
 ```
 cinderpath/
 ├── src/
-│   ├── campfire.js   # Stone ring, logs, embers, flame geometry
-│   ├── controls.js   # FPS camera, pointer lock, head bob
-│   ├── grass.js      # Grass blades with wind animation
-│   ├── main.js       # Entry point, render loop
-│   ├── scene.js      # Scene, camera, renderer, lights
-│   ├── style.css     # Minimal fullscreen styles
-│   ├── tent.js       # Tent mesh with pegs and ropes
-│   ├── trees.js      # 5 tree types, hex-grid placement
-│   ├── utils.js      # Shared geometry and material helpers
-│   └── world.js      # Island shape, sky, stars, moon
+│   ├── campfire.js     # Stone ring, logs, embers, flame geometry
+│   ├── controls.js     # FPS camera, pointer lock, head bob
+│   ├── grass.js        # Grass blades with wind animation
+│   ├── main.js         # Entry point, render loop
+│   ├── river.js        # Animated river with carved island hole and sloped banks
+│   ├── scene.js        # Scene, camera, renderer, lights
+│   ├── style.css       # Minimal fullscreen styles
+│   ├── tent.js         # Tent mesh with pegs and ropes
+│   ├── trees.js        # 5 tree types, hex-grid placement
+│   ├── utils.js        # Shared geometry and material helpers
+│   └── world.js        # Island shape, sky, stars, moon
 ├── index.html
 ├── package.json
 ├── vite.config.js
